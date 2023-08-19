@@ -6,33 +6,15 @@ import { useCallback, useEffect, useState } from "react";
 import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 import ChatListScreen from './screens/ChatListScreen';
 import ChatSettingsScreen from './screens/ChatSettingsScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SettingsScreen from './screens/SettingsScreen';
+import AppNavigator from './navigation/AppNavigator';
 
 SplashScreen.preventAutoHideAsync();
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
-const TabNavigator = () => {
-  return(
-    <Tab.Navigator screenOptions={{
-      headerTitle: ""
-    }} >
-      <Tab.Screen name="Chat List" component={ChatListScreen} 
-        options={{
-          tabBarLabel: "chats"
-        }}
-      />
-      <Tab.Screen name="Settings" component={SettingsScreen} 
-        options={{
-          tabBarLabel: "settings"
-        }}
-      />
-    </Tab.Navigator>
-  )
-}
 export default function App() {
   const [appIsLoaded, setAppIsLoaded] = useState(false);
   useEffect(() => {
@@ -78,14 +60,7 @@ export default function App() {
     <SafeAreaProvider
       style={styles.container}
       onLayout={onLayout}> 
-        <NavigationContainer>
-          <Stack.Navigator>
-            <Stack.Screen name="Home" component={TabNavigator} />
-            <Stack.Screen name="Chat Settings" component={ChatSettingsScreen} options={{
-              headerTitle:"something else",
-             }} />
-          </Stack.Navigator>
-        </NavigationContainer>
+        <AppNavigator />
     </SafeAreaProvider>
   );
 }
