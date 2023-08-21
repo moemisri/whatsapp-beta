@@ -1,18 +1,18 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 import { StyleSheet, Text } from "react-native";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import * as SplashScreen from 'expo-splash-screen';
+import * as SplashScreen from "expo-splash-screen";
 import { useCallback, useEffect, useState } from "react";
-import * as Font from 'expo-font';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import * as Font from "expo-font";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-import ChatListScreen from './screens/ChatListScreen';
-import ChatSettingsScreen from './screens/ChatSettingsScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import SettingsScreen from './screens/SettingsScreen';
-import AppNavigator from './navigation/AppNavigator';
+import ChatListScreen from "./screens/ChatListScreen";
+import ChatSettingsScreen from "./screens/ChatSettingsScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import SettingsScreen from "./screens/SettingsScreen";
+import AppNavigator from "./navigation/AppNavigator";
 
 SplashScreen.preventAutoHideAsync();
 export default function App() {
@@ -20,6 +20,7 @@ export default function App() {
   useEffect(() => {
     const prepare = async () => {
       try {
+        /* prettier-ignore */
         await Font.loadAsync({
           "black": require("./assets/fonts//Roboto-Black.ttf"),
           "blackItalic": require("./assets/fonts/Roboto-BlackItalic.ttf"),
@@ -34,11 +35,9 @@ export default function App() {
           "thin": require("./assets/fonts/Roboto-Thin.ttf"),
           "thinItalic": require("./assets/fonts/Roboto-ThinItalic.ttf"),
         });
-      }
-      catch (error) {
+      } catch (error) {
         console.log.error();
-      }
-      finally {
+      } finally {
         setAppIsLoaded(true);
       }
     };
@@ -57,10 +56,8 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider
-      style={styles.container}
-      onLayout={onLayout}> 
-        <AppNavigator />
+    <SafeAreaProvider style={styles.container} onLayout={onLayout}>
+      <AppNavigator />
     </SafeAreaProvider>
   );
 }
@@ -71,8 +68,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   label: {
-    color: 'black',
+    color: "black",
     fontSize: 18,
-    fontFamily: "regular"
-  }
+    fontFamily: "regular",
+  },
 });
