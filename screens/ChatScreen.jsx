@@ -13,15 +13,16 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Feather } from "@expo/vector-icons";
 
-import backgroundImage from "../assets/images/chat-image-background.jpeg";
+import backgroundImage from "../assets/images/droplet.jpeg";
 import colors from "../constants/colors";
 
 const ChatScreen = (props) => {
   const [messageText, setMessageText] = useState("");
+
   const sendMessage = useCallback(() => {
-    console.log(messageText);
     setMessageText("");
   }, [messageText]);
+
   return (
     <SafeAreaView edges={["right", "left", "bottom"]} style={styles.container}>
       <KeyboardAvoidingView
@@ -46,6 +47,7 @@ const ChatScreen = (props) => {
             style={styles.textbox}
             value={messageText}
             onChangeText={(text) => setMessageText(text)}
+            onSubmitEditing={sendMessage}
           />
 
           {messageText === "" && (
@@ -76,10 +78,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
   },
-  backgroundImage: {
+  screen: {
     flex: 1,
   },
-  screen: {
+  backgroundImage: {
     flex: 1,
   },
   inputContainer: {
