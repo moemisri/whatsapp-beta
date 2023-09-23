@@ -57,7 +57,7 @@ const SettingsScreen = (props) => {
       const result = validateInput(inputId, inputValue);
       dispatchFormState({ inputId, validationResult: result, inputValue });
     },
-    [dispatchFormState],
+    [dispatchFormState]
   );
 
   const saveHandler = useCallback(async () => {
@@ -100,6 +100,7 @@ const SettingsScreen = (props) => {
           size={80}
           userId={userData.userId}
           uri={userData.profilePicture}
+          showEditButton={true}
         />
 
         <Input

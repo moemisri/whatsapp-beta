@@ -10,7 +10,6 @@ import { store } from "./store/store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 LogBox.ignoreLogs(["AsyncStorage has been extracted"]);
-AsyncStorage.clear();
 
 SplashScreen.preventAutoHideAsync();
 

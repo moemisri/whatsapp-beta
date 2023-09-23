@@ -36,7 +36,7 @@ const SignInForm = (props) => {
       const result = validateInput(inputId, inputValue);
       dispatchFormState({ inputId, validationResult: result, inputValue });
     },
-    [dispatchFormState],
+    [dispatchFormState]
   );
 
   useEffect(() => {
@@ -51,7 +51,7 @@ const SignInForm = (props) => {
 
       const action = signIn(
         formState.inputValues.email,
-        formState.inputValues.password,
+        formState.inputValues.password
       );
       setError(null);
       await dispatch(action);
