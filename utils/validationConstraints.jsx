@@ -1,72 +1,72 @@
 import { validate } from "validate.js";
 
 export const validateLength = (id, value, minLength, maxLength, allowEmpty) => {
-  const constraints = {
-    presence: { allowEmpty },
-  };
+    const constraints = { 
+        presence: { allowEmpty }
+    };
 
-  if (!allowEmpty || value !== "") {
-    constraints.length = {};
+    if (!allowEmpty || value !== "") {
+        constraints.length = {}
 
-    if (minLength != null) {
-      constraints.length.minimum = minLength;
+        if (minLength != null) {
+            constraints.length.minimum = minLength;
+        }
+
+        if (maxLength != null) {
+            constraints.length.maximum = maxLength;
+        }
     }
 
-    if (maxLength != null) {
-      constraints.length.maximum = maxLength;
-    }
-  }
+    const validationResult = validate({ [id]: value }, { [id]: constraints });
 
-  const validationResult = validate({ [id]: value }, { [id]: constraints });
-
-  return validationResult && validationResult[id];
-};
+    return validationResult && validationResult[id];
+}
 
 export const validateString = (id, value) => {
-  const constraints = {
-    presence: { allowEmpty: false },
-  };
-
-  if (value !== "") {
-    constraints.format = {
-      pattern: "[a-z]+",
-      flags: "i",
-      message: "value can only contain letters",
+    const constraints = { 
+        presence: { allowEmpty: false }
     };
-  }
 
-  const validationResult = validate({ [id]: value }, { [id]: constraints });
+    if (value !== "") {
+        constraints.format = {
+            pattern: "[a-z]+",
+            flags: "i",
+            message: "value can only contain letters"
+        }
+    }
 
-  return validationResult && validationResult[id];
-};
+    const validationResult = validate({ [id]: value }, { [id]: constraints });
+
+    return validationResult && validationResult[id];
+}
 
 export const validateEmail = (id, value) => {
-  const constraints = {
-    presence: { allowEmpty: false },
-  };
+    const constraints = { 
+        presence: { allowEmpty: false }
+    };
 
-  if (value !== "") {
-    constraints.email = true;
-  }
+    if (value !== "") {
+        constraints.email = true
+    }
 
-  const validationResult = validate({ [id]: value }, { [id]: constraints });
+    const validationResult = validate({ [id]: value }, { [id]: constraints });
 
-  return validationResult && validationResult[id];
-};
+    return validationResult && validationResult[id];
+}
 
 export const validatePassword = (id, value) => {
-  const constraints = {
-    presence: { allowEmpty: false },
-  };
-
-  if (value !== "") {
-    constraints.length = {
-      minimum: 6,
-      message: "must be at least 6 characters",
+    const constraints = { 
+        presence: { allowEmpty: false }
     };
-  }
 
-  const validationResult = validate({ [id]: value }, { [id]: constraints });
+    if (value !== "") {
+        constraints.length = {
+            minimum: 6,
+            message: "must be at least 6 characters"
+        }
+    }
 
-  return validationResult && validationResult[id];
-};
+    const validationResult = validate({ [id]: value }, { [id]: constraints });
+
+    return validationResult && validationResult[id];
+}
